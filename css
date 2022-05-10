@@ -1,0 +1,747 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=KoHo:wght@200&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 30px;
+  font-family: "montserrat", sans-serif;
+  background-color: rgb(26, 24, 24);
+}
+a {
+  text-decoration: none;
+}
+.container {
+  color: black;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  right: 20px;
+
+  font-family: "Montserrat", sans-serif;
+}
+/* start of header */
+#header {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+#header .header {
+  min-height: 8vh;
+  background-color: rgba(31, 30, 30, 0.24);
+  transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1500px;
+  padding: 0 10px;
+}
+#header .nav-list ul {
+  list-style: none;
+  position: absolute;
+  background-color: rgb(31, 30, 30);
+  width: 100vw;
+  height: 100vh;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+  left: 0%;
+}
+#header .nav-list ul a {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+#header .nav-list ul a::after {
+  content: attr(data-after);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: rgba(240, 248, 255, 0.021);
+  font-size: 13rem;
+  letter-spacing: 50px;
+  z-index: -1;
+  transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+  transform: translate(-50%, -50%) scale(1);
+  letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+  color: crimson;
+}
+#header .hamburger {
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  transform: scale(0.8);
+  margin-right: 20px;
+}
+#header .hamburger:after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid white;
+  animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+  height: 2px;
+  width: 30px;
+  position: relative;
+  background-color: white;
+  z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  transition: 0.3s ease;
+  transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+  top: 8px;
+}
+#header .hamburger .bar::before {
+  bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+  bottom: 0;
+}
+#header .hamburger.active .bar::after {
+  top: 0;
+}
+/* end of header */
+/* hero Section */
+#hero {
+  background-image: url(./images/omen.jpg);
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+  z-index: 1;
+}
+#hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+  opacity: 0.3;
+  z-index: -1;
+}
+#hero .hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px;
+  justify-content: flex-start;
+}
+
+#hero h1 {
+  display: block;
+  width: fit-content;
+  font-size: 2.5rem;
+  position: relative;
+  color: transparent;
+  animation: text_reveal 0.5s ease forwards;
+  animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+  animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+  animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+  animation: text_reveal_name 0.5s ease forwards;
+  animation-delay: 3s;
+}
+#hero h1 span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: crimson;
+  animation: text_reveal_box 1s;
+  animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+  animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+  animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+  animation-delay: 2.5s;
+}
+#hero .cta {
+  display: inline-block;
+  padding: 10px 30px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid crimson;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-top: 30px;
+  letter-spacing: 0.05rem;
+  transition: 0.3s ease;
+  transition-property: background-color, color;
+  border-radius: 10px;
+}
+
+#hero .cta:hover {
+  color: white;
+  background-color: crimson;
+}
+.name_title h1{
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: aliceblue;
+  letter-spacing: .2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+.name_title h1 span{
+  color: crimson;
+  text-shadow:0px 0px 10px crimson;
+}
+/* end of hero section */
+
+/* start of game section   */
+
+#games .games {
+  margin-top: 55px;
+  flex-direction: column;
+  text-align: center;
+  max-width: 1300px;
+  margin-left: 107px;
+  padding: 100px 0;
+  /* background-image: url(./images/pexels-francesco-ungaro-998641.jpg); */
+  background-size: cover;
+  box-shadow: 0px 0px 15px rgb(92, 204, 248);
+  border-radius: 50px;
+  
+}
+#games .games .container{
+  padding-top: 100px;
+}
+/* #games .game-top {
+  max-width: 500px;
+  margin: 0 auto;
+} */
+#games .game-title {
+  font-size: 3rem;
+  font-weight: 500;
+  color:rgb(244, 247, 248);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  padding-bottom: 10px;
+}
+#games .game-title span {
+  color:crimson;
+}
+#games .game-top p{
+  padding-bottom: 20px;
+  color: rgb(244, 247, 248);
+}
+#games .game-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+}
+/* start of coc section */
+#games .game-coc {
+  flex-basis: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(./images/coc2.jpg);
+  background-size: cover;
+  margin: 10px 5%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#games .game-coc::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+#games .game-coc h2 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+#games .game-coc p {
+  color: white;
+  text-align: left;
+  font-family: "KoHo", sans-serif;
+}
+#games .game-bottom .game-coc .icon {
+  height: 80px;
+  width: 50px;
+  margin: 20px;
+}
+/* end of coc section */
+
+/* start of valorant */
+#games .game-valo {
+  flex-basis: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(./images/valo1.jpg);
+  background-size: cover;
+  margin: 10px 5%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#games .game-valo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+#games .game-valo h2 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+#games .game-valo p {
+  color: white;
+  text-align: left;
+  font-family: "KoHo", sans-serif;
+}
+#games .game-bottom .game-valo .icon{
+  height: 80px;
+  width: 50px;
+  margin: 20px;v
+}
+/* end of valorant section */
+
+
+/* start of pubgm section */
+#games .game-pubgm {
+  flex-basis: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(./images/pubgm1.jpg);
+  background-size: cover;
+  margin: 10px 5%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#games .game-pubgm::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+#games .game-pubgm h2 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+#games .game-pubgm p {
+  color: white;
+  text-align: left;
+  font-family: "KoHo", sans-serif;
+}
+#games .game-bottom .game-pubgm .icon {
+  height: 80px;
+  width: 50px;
+  margin: 20px;
+  
+}
+ /* end of pubgm section pubgm */
+
+ /* start of csgo secton*/
+#games .game-csgo {
+  flex-basis: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(./images/CS-GO-wallpaper-HD-Logo-4k.jpg);
+  background-size: cover;
+  margin: 10px 5%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#games .game-csgo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+#games .game-csgo h2 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+#games .game-csgo p {
+  color: rgb(255, 255, 255);
+  text-align: left;
+  font-family: "KoHo", sans-serif;
+}
+#games .game-bottom .game-csgo .icon{
+  height: 80px;
+  width: 50px;
+  margin: 20px;v
+}
+/* end of csgo section */
+
+
+ /* start of cr secton*/
+ #games .game-cr {
+  flex-basis: 80%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(./images/cr1.jpg);
+  background-size: cover;
+  margin: 10px 5%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#games .game-cr::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: black;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+#games .game-cr h2 {
+  font-size: 1.3rem;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+#games .game-cr p {
+  color: white;
+  text-align: left;
+  font-family: "KoHo", sans-serif;
+}
+#games .game-bottom .game-cr .icon{
+  height: 80px;
+  width: 50px;
+  margin: 20px;
+}
+/* end of cr section */
+
+
+#games .game-bottom .icon {
+  height: 50px;
+  width: 50px;
+  margin: 20px;
+}
+/* End of game section */
+
+/* start of about me section */
+
+#about .about{
+  flex-direction: column;
+  text-align: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+#about .about_title {
+  font-size: 3rem;
+  font-weight: 500;
+  color: rgb(244, 247, 248);
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  letter-spacing: 0.2rem;
+  text-shadow:0px 0px 10px skyblue;
+}
+#about h1 span{
+  font-size: 3rem;
+  font-weight: 500;
+  color:crimson;
+  text-transform: uppercase;
+  text-shadow:0px 0px 10px crimson;
+}
+#about .about_me{
+  padding-bottom: 50px;
+}
+#about .about_me p{
+  color: aliceblue;
+}
+#about .coc_profile h1{
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: rgb(244, 247, 248);
+  padding-top: 50px;
+  padding-bottom: 30px;
+  text-shadow:0px 0px 10px skyblue;
+}
+#about .coc_profile img{
+  height: 250px;
+  width: 550px;
+  border-radius: 20px;
+  margin: 10px;
+  border:.5px  solid rgb(53, 4, 4);
+  box-shadow: 0px 0px 15px rgb(131, 131, 129);
+  transition: .3s ease box-shadow;
+}
+#about .coc_profile img:hover{
+  box-shadow: 0px 0px 3px 0 rgb(131, 131, 129);
+}
+/* end of about me section */
+
+/* start of contact us section */
+#contact .contact{
+  flex-direction: column;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 0;
+  align-items: center;
+ 
+}
+#contact .contact_title {
+  font-size: 3rem;
+  font-weight: 500;
+  color: rgb(244, 247, 248);
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  letter-spacing: 0.2rem;
+}
+#contact h1 span{
+  font-size: 3rem;
+  font-weight: 500;
+  color:crimson;
+  text-transform: uppercase;
+}
+#contact .contact_items{
+  width: 1300px; 
+  padding-right: 100px;
+  padding-left: 70px;
+  
+}
+#contact .contact_item{
+  width: 80%;
+  padding: 30px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 0px 20px rgb(131, 131, 129);
+  transition: .3s ease box-shadow;
+  background-color: black;
+  
+  
+}
+#contact .contact_item:hover{
+  box-shadow: 0px 0px 5px 0 rgb(131, 131, 129);
+}
+#contact .icon{
+  width: 70px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+#contact .contact-info h1{
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 10px; 
+  color: rgb(244, 247, 248);
+}
+#contact .contact-info h2{
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px; 
+  color: rgb(244, 247, 248);
+}
+/* end of contact us section */
+
+/* start of footer section */
+#footer .footer{
+  background-color: rgb(49, 47, 49);
+  box-shadow: 0px 0px 20px whitesmoke;
+}
+#footer .footer {
+  min-height: 200px;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+#footer h2 {
+  color: aliceblue;
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-shadow:0px 0px 10px yellow;
+}
+#footer .social_icon {
+  display: flex;
+  margin-bottom: 50px;
+  padding-right: 70px;
+}
+#footer .social_item {
+  height: 50px;
+  width: 50px;
+  margin: 0 5px;
+  padding: 42px;
+}
+#footer .social_item img {
+  filter: grayscale(1);
+  transition: 0.25s ease filter;
+}
+#footer .social_item:hover img {
+  filter: grayscale(0);
+  
+}
+#footer p {
+  padding-top: 30px;
+  padding-left: 1100px;
+  color: white;
+  font-size: 1rem;
+}
+/* End of footer section */
+
+/* kerframes */
+@keyframes text_reveal_box {
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+@keyframes text_reveal {
+  100% {
+    color: white;
+  }
+}
+@keyframes text_reveal_name {
+  100% {
+    color: crimson;
+    font-weight: 500px;
+  }
+}
+/* end of key frames */
